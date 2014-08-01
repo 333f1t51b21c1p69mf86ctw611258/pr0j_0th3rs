@@ -1,0 +1,150 @@
+DROP TABLE LIVESCREEN.BROADCASTTIME_BACKUP CASCADE CONSTRAINTS;
+
+CREATE TABLE LIVESCREEN.BROADCASTTIME_BACKUP
+(
+  UPLOAD_ID       NUMBER,
+  PROGRAM_INDEXS  NUMBER,
+  CP_TOPIC_ID     NUMBER,
+  ZONE_ID         NUMBER,
+  STARTTIME       VARCHAR2(30 BYTE),
+  STATUS          NUMBER,
+  CREATEDBY       NUMBER,
+  CREATEDDATE     DATE,
+  TIME            DATE
+)
+NOCOMPRESS 
+TABLESPACE USERS
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+PARTITION BY RANGE (TIME)
+(  
+  PARTITION P_201406 VALUES LESS THAN (TO_DATE(' 2014-07-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P_201407 VALUES LESS THAN (TO_DATE(' 2014-08-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P_201408 VALUES LESS THAN (TO_DATE(' 2014-09-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P_201409 VALUES LESS THAN (TO_DATE(' 2014-10-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P_201410 VALUES LESS THAN (TO_DATE(' 2014-11-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P_201411 VALUES LESS THAN (TO_DATE(' 2014-12-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P_201412 VALUES LESS THAN (TO_DATE(' 2015-01-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               )
+)
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+COMMENT ON COLUMN LIVESCREEN.BROADCASTTIME_BACKUP.TIME IS 'Thoi gian update';
+
+
+
+CREATE OR REPLACE PUBLIC SYNONYM BROADCASTTIME_BACKUP FOR LIVESCREEN.BROADCASTTIME_BACKUP;

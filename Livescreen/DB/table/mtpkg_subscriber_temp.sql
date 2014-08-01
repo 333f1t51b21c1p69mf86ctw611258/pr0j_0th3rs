@@ -1,0 +1,64 @@
+ALTER TABLE LIVESCREEN.MTPKG_SUBSCRIBER_TEMP
+ DROP PRIMARY KEY CASCADE;
+
+DROP TABLE LIVESCREEN.MTPKG_SUBSCRIBER_TEMP CASCADE CONSTRAINTS;
+
+CREATE TABLE LIVESCREEN.MTPKG_SUBSCRIBER_TEMP
+(
+  ID               NUMBER                       NOT NULL,
+  MSISDN           VARCHAR2(15 BYTE),
+  PKGD_ID          VARCHAR2(127 BYTE),
+  REGISTER_TIME    DATE,
+  DEREGISTER_TIME  DATE,
+  STATUS           NUMBER(3),
+  LAST_UPDATE      DATE,
+  LAST_UPDATE_BY   VARCHAR2(255 BYTE),
+  ACTION           VARCHAR2(1 BYTE),
+  INSERT_TIME      DATE,
+  MOVE_STATUS      NUMBER                       DEFAULT 0
+)
+TABLESPACE MTPKG
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+--  There is no statement for index LIVESCREEN.SYS_C0030450.
+--  The object is created when the parent object is created.
+
+ALTER TABLE LIVESCREEN.MTPKG_SUBSCRIBER_TEMP ADD (
+  PRIMARY KEY
+  (ID)
+  USING INDEX
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               )
+  ENABLE VALIDATE);

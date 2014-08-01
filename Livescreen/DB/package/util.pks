@@ -1,0 +1,19 @@
+DROP PACKAGE LIVESCREEN.UTIL;
+
+CREATE OR REPLACE PACKAGE LIVESCREEN.util is
+
+  -- Author  : MANUCIAN86
+  -- Created : 5/30/2013 9:06:40 AM
+  -- Purpose : 
+
+  -- Public type declarations
+  TYPE t_array IS TABLE OF VARCHAR2(50) INDEX BY BINARY_INTEGER;
+  TYPE number_array IS TABLE OF NUMBER INDEX BY BINARY_INTEGER;
+
+  FUNCTION SPLIT_TO_STRING_ARR(p_in_string VARCHAR2, p_delim VARCHAR2)
+    RETURN t_array;
+  FUNCTION SPLIT_TO_NUMBER_ARR(p_in_string VARCHAR2, p_delim VARCHAR2)
+    RETURN number_array;
+
+end util;
+/

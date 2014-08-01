@@ -1,0 +1,70 @@
+ALTER TABLE LIVESCREEN.PROFILE_TEMP
+ DROP PRIMARY KEY CASCADE;
+
+DROP TABLE LIVESCREEN.PROFILE_TEMP CASCADE CONSTRAINTS;
+
+CREATE TABLE LIVESCREEN.PROFILE_TEMP
+(
+  ID            NUMBER                          NOT NULL,
+  MSISDN        VARCHAR2(15 BYTE),
+  ACTIVETIME    DATE,
+  IMEI          VARCHAR2(50 BYTE),
+  STATUS_ID     NUMBER,
+  COS_ID        VARCHAR2(15 BYTE),
+  DEACTIVETIME  DATE,
+  VERSION       VARCHAR2(50 BYTE),
+  LAC           VARCHAR2(10 BYTE),
+  CELL          VARCHAR2(10 BYTE),
+  SUBTYPE       VARCHAR2(10 BYTE),
+  ACTION        VARCHAR2(1 BYTE),
+  INSERT_TIME   DATE,
+  MOVE_STATUS   NUMBER                          DEFAULT 0
+)
+TABLESPACE USERS
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+--  There is no statement for index LIVESCREEN.SYS_C0012668.
+--  The object is created when the parent object is created.
+
+CREATE OR REPLACE PUBLIC SYNONYM PROFILE_TEMP FOR LIVESCREEN.PROFILE_TEMP;
+
+
+ALTER TABLE LIVESCREEN.PROFILE_TEMP ADD (
+  PRIMARY KEY
+  (ID)
+  USING INDEX
+    TABLESPACE USERS
+    PCTFREE    10
+    INITRANS   2
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                PCTINCREASE      0
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               )
+  ENABLE VALIDATE);

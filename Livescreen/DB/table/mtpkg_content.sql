@@ -1,0 +1,375 @@
+ALTER TABLE LIVESCREEN.MTPKG_CONTENT
+ DROP PRIMARY KEY CASCADE;
+
+DROP TABLE LIVESCREEN.MTPKG_CONTENT CASCADE CONSTRAINTS;
+
+CREATE TABLE LIVESCREEN.MTPKG_CONTENT
+(
+  CONTENT_ID       VARCHAR2(50 BYTE)            NOT NULL,
+  TIMEPLUG         DATE,
+  SUBCONTENTS      VARCHAR2(1000 BYTE),
+  STATUS           NUMBER(5)                    DEFAULT 0,
+  DURATION_UPDATE  VARCHAR2(100 BYTE)           DEFAULT '0',
+  INSERT_TIME      DATE                         DEFAULT SYSDATE,
+  PKG_ID           NUMBER(7),
+  RESP_TYPE        VARCHAR2(15 BYTE),
+  DOWNLOAD_ID      NUMBER(31)
+)
+NOCOMPRESS 
+TABLESPACE MTPKG_CONTENT
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+PARTITION BY RANGE (TIMEPLUG)
+(  
+  PARTITION P201307 VALUES LESS THAN (TO_DATE(' 2013-08-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201308 VALUES LESS THAN (TO_DATE(' 2013-09-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201309 VALUES LESS THAN (TO_DATE(' 2013-10-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201310 VALUES LESS THAN (TO_DATE(' 2013-11-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201311 VALUES LESS THAN (TO_DATE(' 2013-12-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201312 VALUES LESS THAN (TO_DATE(' 2014-01-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201401 VALUES LESS THAN (TO_DATE(' 2014-02-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201402 VALUES LESS THAN (TO_DATE(' 2014-03-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201403 VALUES LESS THAN (TO_DATE(' 2014-04-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201404 VALUES LESS THAN (TO_DATE(' 2014-05-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201405 VALUES LESS THAN (TO_DATE(' 2014-06-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201406 VALUES LESS THAN (TO_DATE(' 2014-07-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201407 VALUES LESS THAN (TO_DATE(' 2014-08-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201408 VALUES LESS THAN (TO_DATE(' 2014-09-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201409 VALUES LESS THAN (TO_DATE(' 2014-10-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201410 VALUES LESS THAN (TO_DATE(' 2014-11-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201411 VALUES LESS THAN (TO_DATE(' 2014-12-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201412 VALUES LESS THAN (TO_DATE(' 2015-01-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               ),  
+  PARTITION P201501 VALUES LESS THAN (TO_DATE(' 2015-02-01 00:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
+    LOGGING
+    NOCOMPRESS 
+    TABLESPACE MTPKG_CONTENT
+    PCTFREE    10
+    INITRANS   1
+    MAXTRANS   255
+    STORAGE    (
+                INITIAL          64K
+                NEXT             1M
+                MINEXTENTS       1
+                MAXEXTENTS       UNLIMITED
+                BUFFER_POOL      DEFAULT
+                FLASH_CACHE      DEFAULT
+                CELL_FLASH_CACHE DEFAULT
+               )
+)
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+COMMENT ON COLUMN LIVESCREEN.MTPKG_CONTENT.STATUS IS '0: Not Approved; 1: Approved; 2: Disable';
+
+COMMENT ON COLUMN LIVESCREEN.MTPKG_CONTENT.RESP_TYPE IS 'SMS; MEDIA';
+
+
+
+CREATE UNIQUE INDEX LIVESCREEN.MTPKG_CONTENT_PK ON LIVESCREEN.MTPKG_CONTENT
+(CONTENT_ID)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+NOPARALLEL;
+
+
+CREATE OR REPLACE PUBLIC SYNONYM MTPKG_CONTENT FOR LIVESCREEN.MTPKG_CONTENT;
+
+
+ALTER TABLE LIVESCREEN.MTPKG_CONTENT ADD (
+  CONSTRAINT MTPKG_CONTENT_PK
+  PRIMARY KEY
+  (CONTENT_ID)
+  USING INDEX LIVESCREEN.MTPKG_CONTENT_PK
+  ENABLE VALIDATE);

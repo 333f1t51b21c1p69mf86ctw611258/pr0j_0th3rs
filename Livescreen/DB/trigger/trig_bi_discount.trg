@@ -1,0 +1,16 @@
+DROP TRIGGER LIVESCREEN.TRIG_BI_DISCOUNT;
+
+CREATE OR REPLACE TRIGGER LIVESCREEN.TRIG_BI_DISCOUNT 
+ BEFORE 
+ INSERT
+ ON LIVESCREEN.LSB_DISCOUNT_BILLING
+ REFERENCING OLD AS OLD NEW AS NEW
+ FOR EACH ROW
+begin
+if inserting then
+    if :NEW."ID" is null then
+        select SEQUENCE_INDEX.nextval into :NEW."ID" from dual;
+    end if;
+end if;
+end;
+/
