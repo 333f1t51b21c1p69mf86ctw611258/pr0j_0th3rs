@@ -1,0 +1,18 @@
+Tích hợp
+	- Có thể tích hợp với hệ thống tin nhắn của tất cả các hãng viễn thông đã và sẽ có trong nước.
+		+ Đấu nối
+			Thông qua CP
+			CP cung cấp đầu số để thuê bao có thể gửi SMS tới
+			=> Có thể thực hiện Provisioning, truy vấn thông tin
+			
+	- Có thể tích hợp với các cổng thanh toán trong nước và quốc tế.
+		+ Các cổng thanh toán liên kết với ngân hàng
+			=> Balance có thể là Balance của PaymentService hoặc Balance của ngân hàng
+		+ PaymentService cung cấp giao thức, API để giao tiếp với hệ thống Payment
+		
+	- Có thể tích hợp và điều khiển các bảng điển tử LED dặt tại nhiều nơi trong nhà ga và các khu vực công cộng, cũng như trên website.
+		+ Hệ thống, hạ tầng hiện tại phải support việc giao tiếp điều khiển này.
+		
+	- Có thể tích hợp và chia sẻ thông tin với tất cả các hệ thống quản lý khác của ngành ĐSVN.
+		+ Phía hệ thống của mình: Cung cấp giao thức WebService
+		+ Các hệ thống đang có hiện tại thì tùy theo
